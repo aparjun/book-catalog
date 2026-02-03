@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Writer | Library</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="catalog-container">
+        <header class="header">
+            <h1>The Condensed Library</h1>
+            <p>Masterpieces distilled into their essence.</p>
+        </header>
+
+        <div class="book-grid">
+            {% for book in books %}
+            <div class="book-card" onclick="location.href='books/{{ book.slug }}/{{ book.pages[0].filename }}'">
+                <div>
+                    <div class="book-title">{{ book.title }}</div>
+                    <div class="book-meta">{{ book.pages|length }} Sections</div>
+                </div>
+                <div class="book-btn">Read Now</div>
+            </div>
+            {% endfor %}
+
+            {% if not books %}
+            <div style="text-align: center; color: #64748b; grid-column: 1/-1;">
+                No books available yet. Add a book to get started.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
